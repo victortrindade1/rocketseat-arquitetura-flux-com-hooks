@@ -11,6 +11,7 @@ sem nem saber q cor hexadecimal é. Deixa mais rápido a criação.
 Exemplo de uso:
 
 ```javascript
+import styled from 'styled-components';
 import { darken } from 'polished';
 
 export const Foobar = styled.div`
