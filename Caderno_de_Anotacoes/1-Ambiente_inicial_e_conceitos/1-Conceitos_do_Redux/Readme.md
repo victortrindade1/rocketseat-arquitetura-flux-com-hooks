@@ -9,6 +9,9 @@
   - As ações do usuário causam efeitos colaterais nos dados
 - Exemplos: Dados do usuário, Carrinho de compras, etc.
 
+> Para ir para as anotações do Redux no projeto:
+> Caderno_de_Anotacoes/3-Configurando_o_carrinho/1-Configurando_Redux
+
 ## Arquitetura Flux
 
 ![arq_flux](arq_flux.png)

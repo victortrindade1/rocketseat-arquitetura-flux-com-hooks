@@ -1,22 +1,25 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
 
 import GlobalStyle from './styles/global';
 import Header from './components/Header';
 import Routes from './routes';
 
+import store from './store';
+
 function App() {
   return (
-    /**
-     * O BrowserRouter fica geralmente no routes.js. Nesse projeto ele está aqui
-     * pq o Header vai possuir navegação e, por isso, vai precisar acessar as
-     * propriedades de navegação do router-dom.
-     */
-    <BrowserRouter>
-      <Header />
-      <Routes />
-      <GlobalStyle />
-    </BrowserRouter>
+    <Provider store={store}>
+      {/* O BrowserRouter fica geralmente no routes.js. Nesse projeto ele está
+      aqui * pq o Header vai possuir navegação e, por isso, vai precisar acessar
+      as * propriedades de navegação do router-dom. */}
+      <BrowserRouter>
+        <Header />
+        <Routes />
+        <GlobalStyle />
+      </BrowserRouter>
+    </Provider>
   );
 }
 
