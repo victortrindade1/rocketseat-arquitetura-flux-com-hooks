@@ -18,7 +18,7 @@ const store = createStore(rootReducer);
 export default store;
 ```
 
-## ## src/store/modules
+## src/store/modules
 
 Na pasta modules vc coloca cada pasta de cada reducer.
 
