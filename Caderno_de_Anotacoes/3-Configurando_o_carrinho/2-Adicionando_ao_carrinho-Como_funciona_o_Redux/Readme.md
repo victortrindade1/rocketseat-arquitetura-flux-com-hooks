@@ -107,6 +107,10 @@ export default function cart(state = [], action) {
 
 ## src/components/Header/index.js
 
+Aqui foi tudo feito dentro de `connect()`, mas o ideal é criar um
+`mapStateToProps`, q transforma as informações do estado em propriedades para
+o component. Veja exemplo mais a frente em `4-Listando_no_carrinho`.
+
 ```diff
 import React from 'react';
 + import PropTypes from 'prop-types';
