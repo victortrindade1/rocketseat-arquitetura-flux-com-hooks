@@ -42,6 +42,7 @@ class Home extends Component {
   };
 
   render() {
+    // console.tron.log('hey');
     const { products } = this.state;
 
     return (

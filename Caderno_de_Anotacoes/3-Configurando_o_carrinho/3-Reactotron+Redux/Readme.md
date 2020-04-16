@@ -5,6 +5,16 @@
 Aqui com estes passos abaixo rodou liso. No início não chegou a aparecer a
 connection, mas depois do primeiro console.tron.log apareceu.
 
+## Subscriptions
+
+No Reactotron vc pode capturar seus reducers e fazer um controle maior sobre
+eles. No Reactotron, os reducers se chamam `subscriptions`. Vá em
+Ssubscriptions, Crie uma nova, com mesmo nome de um reducer, e seu reducer
+aparecerá lá.
+
+> Vc pode fazer snapshots do seu state, para qnd salvar e zerar o state, voltar
+> pros dados anteriores do state.
+
 ## src/config/ReactotronConfig.js
 
 ```javascript
