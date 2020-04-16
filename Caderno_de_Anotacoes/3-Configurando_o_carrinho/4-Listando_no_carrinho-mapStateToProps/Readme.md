@@ -92,7 +92,8 @@ Vamos adicionar umas informações a mais no carrinho.
 
 > Com o q foi feito aqui, sempre q adicionar ao carrinho vai criar uma nova
 > linha e dizer q é qnt = 1, qnd o correto seria não duplicar item igual e
-> incrementar na qnt qnd for item igual. Na próxima aula isto é consertado.
+> incrementar na qnt qnd for item igual. Mais a frente vc verá como editar um
+> store usando o Immer e editar o amount.
 
 ```diff
 export default function cart(state = [], action) {
