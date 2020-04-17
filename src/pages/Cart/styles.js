@@ -63,11 +63,13 @@ export const ProductTable = styled.table`
     align-items: center;
 
     input {
-      border: 1px solid #ddd;
+      border: 1px solid #eee;
       border-radius: 4px;
       color: #666;
       padding: 6px;
       width: 50px;
+      /* Input do tipo number por default possui arrows up e down */
+      -moz-appearance: textfield;
     }
   }
 
