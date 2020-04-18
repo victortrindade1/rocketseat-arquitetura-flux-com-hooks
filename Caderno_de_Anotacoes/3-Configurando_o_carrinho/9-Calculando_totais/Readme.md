@@ -1,3 +1,15 @@
+# Calculando totais
+
+Vamos calcular o subtotal e o total do carrinho. O melhor lugar para fazer
+operações matemáticas com valores da tela, é dentro do `mapStateToProps`.
+Parece estranho, mas é um jeito eficiente do programa rodar liso. Muita gnt tb
+manipula dentro do reducer. Poderia. Outro lugar q dá é dentro do render. O
+problema seria q executaria sempre o cálculo. Logo, o melhor lugar é no
+mapStateToProps, pois o resultado já vira propriedade e já entra no state.
+
+## src/pages/Cart/index.js
+
+```diff
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -9,11 +21,12 @@ import {
 
 import * as CartActions from '../../store/modules/cart/actions';
 
-import { formatPriceBRL } from '../../util/format';
++ import { formatPriceBRL } from '../../util/format';
 
 import { Container, ProductTable, Total } from './styles';
 
-function Cart({ cart, total, removeFromCart, updateAmount }) {
+- function Cart({ cart, removeFromCart, updateAmount }) {
++ function Cart({ cart, total, removeFromCart, updateAmount }) {
   function increment(product) {
     updateAmount(product.id, product.amount + 1);
   }
@@ -55,7 +68,8 @@ function Cart({ cart, total, removeFromCart, updateAmount }) {
                 </div>
               </td>
               <td>
-                <strong>{product.subtotal}</strong>
+-                <strong>R$258,80</strong>
++                <strong>{product.subtotal}</strong>
               </td>
               <td>
                 <button type="button">
@@ -76,7 +90,8 @@ function Cart({ cart, total, removeFromCart, updateAmount }) {
 
         <Total>
           <span>TOTAL</span>
-          <strong>{total}</strong>
+-          <strong>R$1920,28</strong>
++          <strong>{total}</strong>
         </Total>
       </footer>
     </Container>
@@ -84,15 +99,16 @@ function Cart({ cart, total, removeFromCart, updateAmount }) {
 }
 
 const mapStateToProps = (state) => ({
-  cart: state.cart.map((product) => ({
-    ...product,
-    subtotal: formatPriceBRL(product.price * product.amount),
-  })),
-  total: formatPriceBRL(
-    state.cart.reduce((total, product) => {
-      return total + product.price * product.amount;
-    }, 0)
-  ),
+-  cart: state.cart,
++  cart: state.cart.map((product) => ({
++    ...product,
++    subtotal: formatPriceBRL(product.price * product.amount),
++  })),
++  total: formatPriceBRL(
++    state.cart.reduce((total, product) => {
++      return total + product.price * product.amount;
++    }, 0)
++  ),
 });
 
 const mapDispatchToProps = (dispatch) =>
@@ -100,3 +116,4 @@ const mapDispatchToProps = (dispatch) =>
   bindActionCreators(CartActions, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart);
+```
