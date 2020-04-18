@@ -1,3 +1,13 @@
+# Exibindo quantidades
+
+Qnd o usuário seleciona um produto para o carrinho na Home, dentro do botão de
+adicionar ao carrinho aparecerá qnts ítens deste produto foram adicionados.
+
+![img](img.png)
+
+## src/pages/Home/index.js
+
+```diff
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -40,8 +50,6 @@ class Home extends Component {
   render() {
     const { products } = this.state;
 
-    const { amount } = this.props;
-
     return (
       <ProductList>
         {products.map((product) => (
@@ -55,8 +63,9 @@ class Home extends Component {
               onClick={() => this.handleAddProduct(product)}
             >
               <div>
-                <MdAddShoppingCart size={16} color="#fff" />
-                {amount[product.id] || ''}
+-                <MdAddShoppingCart size={16} color="#fff" /> 3
++                <MdAddShoppingCart size={16} color="#fff" />
++                {amount[product.id] || ''}
               </div>
 
               <span>ADICIONAR AO CARRINHO</span>
@@ -68,21 +77,24 @@ class Home extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  // Quantidade daquele produto selecionado
-  amount: state.cart.reduce((amount, product) => {
-    amount[product.id] = product.amount;
-
-    return amount;
-  }, {}),
-});
++ const mapStateToProps = (state) => ({
++   // Quantidade daquele produto selecionado
++   amount: state.cart.reduce((amount, product) => {
++     amount[product.id] = product.amount;
++
++     return amount;
++   }, {}),
++ });
 
 const mapDispatchToProps = (dispatch) =>
   // Actions se tornam props
   bindActionCreators(CartActions, dispatch);
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+- // Primeiro argumento é null pois no lugar dele fica o mapStateToProps
+- export default connect(null, mapDispatchToProps)(Home);
++ export default connect(mapStateToProps, mapDispatchToProps)(Home);
 
 Home.propTypes = {
   addToCart: PropTypes.func.isRequired,
 };
+```
