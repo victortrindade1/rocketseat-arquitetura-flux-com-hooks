@@ -33,28 +33,28 @@ function* addToCart({ id }) {
 export default all([takeLatest('@cart/ADD_REQUEST', addToCart)]);
 ```
 
-Functions Generator:
-function\* = async
-yield = await
-É mais potente, pois async não tem suporte a algumas coisas
+- Function Generator:
+  function\* = async
+  yield = await
+  É mais potente, pois async não tem suporte a algumas coisas
 
-call:
-O Redux Saga não deixa chamar api.get diretamente. O call é responsável por
-chamar métodos assíncronos q retornam promisses.
+- call:
+  O Redux Saga não deixa chamar api.get diretamente. O call é responsável por
+  chamar métodos assíncronos q retornam promisses.
 
-put:
-P/ o Saga disparar actions.
+- put:
+  P/ o Saga disparar actions.
 
-take:
-Um dos métodos do Saga ouvir actions. Existe tb o takeEvery, takeLatest, etc.
-Por ex, o takeLatest ouve apenas a última vez q o usuário clica num botão.
-Isto serve para aqueles usuários q ficam punhetando achando q o programa vai
-ficar mais rápido... Na última apertada, cancela as requests anteriores. Já
-um takeEvery, ouviria todas as punhetadas. Serve para casos diferentes.
+- take:
+  Um dos métodos do Saga ouvir actions. Existe tb o takeEvery, takeLatest, etc.
+  Por ex, o takeLatest ouve apenas a última vez q o usuário clica num botão.
+  Isto serve para aqueles usuários q ficam punhetando achando q o programa vai
+  ficar mais rápido... Na última apertada, cancela as requests anteriores. Já
+  um takeEvery, ouviria todas as punhetadas. Serve para casos diferentes.
 
-all:
-Método do Saga para cadastrar vários listeners. Os listeners ficam ouvindo
-qnd uma action é disparada
+- all:
+  Método do Saga para cadastrar vários listeners. Os listeners ficam ouvindo
+  qnd uma action é disparada
 
 ## src/store/modules/cart/actions.js
 
