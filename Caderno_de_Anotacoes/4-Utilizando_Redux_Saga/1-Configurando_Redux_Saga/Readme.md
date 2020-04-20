@@ -1,17 +1,13 @@
 # Configurando o Redux Saga + Reactotron
 
-`yarn add reactotron-redux-saga`
-
 O Redux Saga usa middlewares para interceptar actions, e criar side-effects.
 
-`yarn add redux-saga`
+`yarn add redux-saga reactotron-redux-saga`
 
-No projeto, vamos usar para fazer chamada API para os detalhes do produto ao
-adicioná-lo ao carrinho. Caso todos os detalhes de todos os produtos
-renderisassem ao carregar a página, seria pesado. Logo, a rota inicial carrega
-poucos detalhes, como nome, preço e foto, e ao selecionar o produto, aí acessa a
-rota com detalhes como tamanho, cor, peso, etc. Como é uma requisição
-assíncrona, usa o Redux Saga.
+O Redux Saga serve para fazer requests assíncronas.
+
+Neste projeto, fará uma chamada API nos detalhes do produto ao adicioná-lo no
+carrinho.
 
 ## src/store/modules/cart/sagas.js
 
