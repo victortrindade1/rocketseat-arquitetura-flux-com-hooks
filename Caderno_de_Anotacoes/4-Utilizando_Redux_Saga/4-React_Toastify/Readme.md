@@ -6,6 +6,8 @@ personalizável.
 No projeto, será uma msg de erro qnd o usuário adicionar um produto fora de
 estoque.
 
+![toastify](toastify.png)
+
 `yarn add react-toastify`
 
 ## src/App.js
