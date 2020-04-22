@@ -55,7 +55,7 @@ export default all([takeLatest('@cart/ADD_REQUEST', addToCart)]);
     problema.
 
 - all:
-  Método do Saga para cadastrar vários listeners ou sagas.
+  Método do Saga para cadastrar vários listeners e sagas.
 
 ## src/store/modules/cart/actions.js
 
