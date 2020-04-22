@@ -6,7 +6,7 @@ Instale as dependências:
 Rode o servidor fake:
 `yarn server`
 
-Abra o Reactotron se quiser debugar.
+Abra o Reactotron se quiser debugar por lá.
 
 Starta o node:
 `yarn start`
