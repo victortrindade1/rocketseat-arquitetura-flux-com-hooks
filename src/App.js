@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
 
@@ -9,20 +9,18 @@ import GlobalStyle from './styles/global';
 import Header from './components/Header';
 import Routes from './routes';
 
+import history from './services/history';
 import store from './store';
 
 function App() {
   return (
     <Provider store={store}>
-      {/* O BrowserRouter fica geralmente no routes.js. Nesse projeto ele está
-      aqui * pq o Header vai possuir navegação e, por isso, vai precisar acessar
-      as * propriedades de navegação do router-dom. */}
-      <BrowserRouter>
+      <Router history={history}>
         <Header />
         <Routes />
         <GlobalStyle />
         <ToastContainer autoClose={3000} />
-      </BrowserRouter>
+      </Router>
     </Provider>
   );
 }

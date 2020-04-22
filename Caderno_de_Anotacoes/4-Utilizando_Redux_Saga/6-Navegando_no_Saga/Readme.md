@@ -1,8 +1,71 @@
+# Navegando no Saga
+
+Após adicionar ao carrinho, o usuário será redirecionado ao carrinho.
+
+Vc deve redirecionar por dentro do saga, pois senão o app te redirecionará antes
+do saga terminar a request.
+
+Para redirecionar, vou usar a lib `history`, q manipula URLs no browser.
+
+`yarn add history`
+
+## src/services/history.js
+
+```javascript
+import { createBrowserHistory } from 'history';
+
+const history = createBrowserHistory();
+
+export default history;
+```
+
+## src/App.js
+
+```diff
+import React from 'react';
+- import { BrowserRouter } from 'react-router-dom';
++ import { Router } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { ToastContainer } from 'react-toastify';
+
+import './config/ReactotronConfig';
+
+import GlobalStyle from './styles/global';
+import Header from './components/Header';
+import Routes from './routes';
+
++ import history from './services/history';
+import store from './store';
+
+function App() {
+  return (
+    <Provider store={store}>
+-      {/* O BrowserRouter fica geralmente no routes.js. Nesse projeto ele está
+-      aqui * pq o Header vai possuir navegação e, por isso, vai precisar acessar
+-      as * propriedades de navegação do router-dom. */}
+-      <BrowserRouter>
++      <Router history={history}>
+        <Header />
+        <Routes />
+        <GlobalStyle />
+        <ToastContainer autoClose={3000} />
+-      </BrowserRouter>
++      </Router>
+    </Provider>
+  );
+}
+
+export default App;
+```
+
+## src/store/modules/cart/sagas.js
+
+```diff
 import { call, select, put, all, takeLatest } from 'redux-saga/effects';
 import { toast } from 'react-toastify';
 
 import api from '../../../services/api';
-import history from '../../../services/history';
++ import history from '../../../services/history';
 import { formatPriceBRL } from '../../../util/format';
 
 import { addToCartSuccess, updateAmountSuccess } from './actions';
@@ -41,8 +104,8 @@ function* addToCart({ id }) {
 
       yield put(addToCartSuccess(data));
 
-      // Redireciona p/ o carrinho
-      history.push('/cart');
++      // Redireciona p/ o carrinho
++      history.push('/cart');
     }
   } catch (err) {
     console.tron.log(err);
@@ -67,3 +130,4 @@ export default all([
   takeLatest('@cart/ADD_REQUEST', addToCart),
   takeLatest('@cart/UPDATE_AMOUNT_REQUEST', updateAmount),
 ]);
+```
