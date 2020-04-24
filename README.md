@@ -1,7 +1,7 @@
 # Getting started
 
 Instale as dependências:
-`yarn add`
+`yarn`
 
 Rode o servidor fake:
 `yarn server`
