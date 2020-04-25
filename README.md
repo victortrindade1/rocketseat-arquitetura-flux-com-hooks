@@ -11,4 +11,8 @@ Abra o Reactotron se quiser debugar por lá.
 Starta o node:
 `yarn start`
 
-![demo](demo.png)
+Home:
+![home](demo_images/home.png)
+
+Cart:
+![cart](demo_images/cart.png)
