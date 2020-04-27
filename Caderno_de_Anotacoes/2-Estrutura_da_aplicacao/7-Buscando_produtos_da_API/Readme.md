@@ -25,6 +25,7 @@ export const { format: formatPriceBRL } = new Intl.NumberFormat('pt-BR', {
 
 import { MdAddShoppingCart } from 'react-icons/md';
 + import { formatPriceBRL } from '../../util/format';
++ import api from '../../services/api';
 
 import { ProductList } from './styles';
 
