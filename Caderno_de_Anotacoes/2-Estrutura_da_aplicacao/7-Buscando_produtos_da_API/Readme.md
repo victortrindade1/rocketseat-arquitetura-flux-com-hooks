@@ -17,6 +17,19 @@ export const { format: formatPriceBRL } = new Intl.NumberFormat('pt-BR', {
 });
 ```
 
+### Bug: Intl com React Native
+
+No RN vem desabilitada a _International Variable_, pois ocupa 6Mb a mais na build. Este módulo libera a internacionalização de data e moeda para fora do inglês.
+
+Para poder usar o `Intl`:
+
+android/app/build.gradle
+
+```diff
+- def jscFlavor = 'org.webkit:android-jsc:+'
++ def jscFlavor = 'org.webkit:android-jsc-intl:+'
+```
+
 ## src/pages/Home/index.js
 
 ```diff
