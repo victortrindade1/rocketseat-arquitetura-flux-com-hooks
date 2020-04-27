@@ -28,11 +28,13 @@ Coloca este arquivo no root do projeto.
 
 Starta o servidor fake:
 
-`json-server foobar.json -p 3333 -w`
+`json-server foobar.json -p 3333 --H 0.0.0.0 --watch`
 
 > A porta 3333 é a padrão para backend
 
 > A flag -w (watch) é para ver o JSON sendo atualizado ao vivo enquanto roda
+
+> A flag --H 0.0.0.0 é um localhost genérico q serve melhor. Ele resolveu um bug
 
 Pronto! Agora vc pode fazer requests com GET, POST, PUT, DELETE, com rotas
 padrões.

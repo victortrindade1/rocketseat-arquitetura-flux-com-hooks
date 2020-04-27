@@ -23,6 +23,8 @@ class Home extends Component {
     vai chamar a função.
     Fique atento! Analise bem se precisa usar uma função dentro do render!
     */
+
+    console.tron.log(response);
     const data = response.data.map((product) => ({
       ...product,
       priceBRL: formatPriceBRL(product.price),
