@@ -54,3 +54,39 @@ const api = axios.create({
 
 export default api;
 ```
+
+## Bug (axios + json-server + react native)
+
+Pode ser q precise trocar o `localhost` pro IP local da máquina. Para saber o ip
+local: `hostname -I`. O axios e o json-server possuem uma incompatibilidade pois
+o json-server lança um http em vez de https, o q faz o axios rejeitar. Para não
+dar bug:
+
+```javascript
+import axios from 'axios';
+
+const api = axios.create({
+  baseURL: 'http://192.168.1.7:3333', // 'http://<ip_local>:3333'
+});
+
+export default api;
+```
+
+android/app/src/main/AndroidManifest.xml:
+
+```diff
+<application
+      android:name=".MainApplication"
+      android:label="@string/app_name"
+      android:icon="@mipmap/ic_launcher"
+      android:roundIcon="@mipmap/ic_launcher_round"
+      android:allowBackup="false"
+      android:theme="@style/AppTheme"
++      android:usesCleartextTraffic="true">
+      <activity
+```
+
+package.json:
+`"server": "json-server foobar.json -p 3333 --H 0.0.0.0 --watch"`
+
+> Coloque o --H 0.0.0.0 --watch
