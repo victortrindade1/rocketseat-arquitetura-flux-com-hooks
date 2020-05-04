@@ -100,3 +100,15 @@ Home.propTypes = {
   addToCart: PropTypes.func.isRequired,
 };
 ```
+
+## src/store/modules/cart/actions.js
+
+```diff
+export function addToCart(product) {
+  return {
+    type: '@cart/ADD',
+    product,
++   amount
+  };
+}
+```
