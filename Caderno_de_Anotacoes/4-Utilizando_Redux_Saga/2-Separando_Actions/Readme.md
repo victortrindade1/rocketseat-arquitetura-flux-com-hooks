@@ -1,12 +1,9 @@
 # Separando actions
 
 Toda a lógica q está no reducer vai para o saga. Assim teremos um reducer limpo
-e padronizado.
-
-A action @cart/ADD_SUCCESS q hj incrementa amount no reducer, vai passar a
-incrementar no saga. O q me dá a entender q qnd eu quero q o saga faça requests,
-todo o tratamento do state para a response eu vou passar a manipular no saga e
-não no reducer. Desta forma, o reducer fica limpo, e o saga... o saga...
+e padronizado. Sem o Saga, não é simples ficar editando state com Immer no
+reducer. Fica muito draft pra cá, draft pra lá... Com o Saga vc programa de
+forma normal tetificada!
 
 ## src/store/modules/cart/reducer.js
 

@@ -18,6 +18,8 @@ O q eu quero:
   de criar um newAmount no store.
 - Qnd o usuário clica pela primeira vez no produto, cria um amount = 1
 
+> Mais pra frente, qnd vc ver o Redux Saga, vc verá q esse algoritmo no reducer cheio de drafts horríveis, some tudo. Fica super limpo só com um draft.push, e todo o resto faz no saga com código normal sem draft. Então não se desespere. Se usar Saga, não precisa criar as coisas no reducer.
+
 ```diff
 + import produce from 'immer';
 
