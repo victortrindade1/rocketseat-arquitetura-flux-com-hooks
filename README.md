@@ -1,3 +1,5 @@
+> Este app é continuação do **arquitetura-flux**.
+
 # Getting started
 
 Instale as dependências:
